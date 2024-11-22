@@ -62,11 +62,11 @@ def pre_check() -> bool:
 
 
 def analyse_stream(vision_frame : VisionFrame, video_fps : Fps) -> bool:
-	global STREAM_COUNTER
-
-	STREAM_COUNTER = STREAM_COUNTER + 1
-	if STREAM_COUNTER % int(video_fps) == 0:
-		return analyse_frame(vision_frame)
+# 	global STREAM_COUNTER
+#
+# 	STREAM_COUNTER = STREAM_COUNTER + 1
+# 	if STREAM_COUNTER % int(video_fps) == 0:
+# 		return analyse_frame(vision_frame)
 	return False
 
 
@@ -78,15 +78,16 @@ def analyse_frame(vision_frame : VisionFrame) -> bool:
 
 
 def forward(vision_frame : VisionFrame) -> float:
-	content_analyser = get_inference_pool().get('content_analyser')
-
-	with conditional_thread_semaphore():
-		probability = content_analyser.run(None,
-		{
-			'input': vision_frame
-		})[0][0][1]
-
-	return probability
+# 	content_analyser = get_inference_pool().get('content_analyser')
+#
+# 	with conditional_thread_semaphore():
+# 		probability = content_analyser.run(None,
+# 		{
+# 			'input': vision_frame
+# 		})[0][0][1]
+#
+# 	return probability
+	return 0.0
 
 
 def prepare_frame(vision_frame : VisionFrame) -> VisionFrame:
